@@ -1,64 +1,358 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angel S</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
+    <title>Portafolio de Científico de Datos</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<body>
-    <header>
-        <h1>[Tu Nombre Completo]</h1>
-        <nav>
-            <ul>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <style>
+        /* Estilos base */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Variables de color para los temas */
+        :root {
+            --bg-light: #f8fafc; /* slate-50 */
+            --text-light: #0f172a; /* slate-900 */
+            --card-bg-light: #ffffff;
+            --border-light: #e2e8f0; /* slate-200 */
+            --accent-color: #3b82f6; /* blue-500 */
+            --accent-hover: #2563eb; /* blue-600 */
 
-    <main>
-        <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-            <p>
-                ¡Hola! Soy [Tu Nombre], un apasionado [Tu Profesión o lo que estudias]. 
-                Aquí puedes describir brevemente tus intereses, habilidades y lo que te motiva.
-            </p>
-        </section>
+            --bg-dark: #0f172a; /* slate-900 */
+            --text-dark: #f8fafc; /* slate-50 */
+            --card-bg-dark: #1e293b; /* slate-800 */
+            --border-dark: #334155; /* slate-700 */
+        }
+        /* Estilos para el modo claro (por defecto) */
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+        .card {
+            background-color: var(--card-bg-light);
+            border: 1px solid var(--border-light);
+        }
+        .nav-link {
+            color: var(--text-light);
+        }
+        .accent-text {
+            color: var(--accent-color);
+        }
+        .accent-bg {
+            background-color: var(--accent-color);
+        }
+        .accent-bg:hover {
+            background-color: var(--accent-hover);
+        }
+        .icon-bg {
+            background-color: #e0f2fe; /* sky-100 */
+        }
 
-        <section id="proyectos">
-            <h2>Mis Proyectos</h2>
-            <article>
-                <h3>Nombre del Proyecto 1</h3>
-                <p>
-                    Una breve descripción de tu primer proyecto. Explica qué tecnologías usaste 
-                    y cuál fue el objetivo. Puedes añadir un enlace al proyecto o a su código en GitHub.
+        /* Estilos para el modo oscuro */
+        body.dark {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        .dark .card {
+            background-color: var(--card-bg-dark);
+            border-color: var(--border-dark);
+        }
+        .dark .nav-link {
+            color: var(--text-dark);
+        }
+        .dark .icon-bg {
+            background-color: #38bdf81a; /* sky-400/10 */
+        }
+        .dark .form-input {
+            background-color: #334155; /* slate-700 */
+            border-color: #475569; /* slate-600 */
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Contenedor principal -->
+    <div class="container mx-auto max-w-5xl px-6 py-8 md:py-12">
+
+        <!-- Header y Navegación -->
+        <header class="flex justify-between items-center mb-16 md:mb-24">
+            <a href="#" class="text-2xl font-bold tracking-tight" data-key="your_name_header">Tu Nombre</a>
+            <div class="flex items-center space-x-2">
+                <nav class="hidden md:flex items-center space-x-8 mr-6">
+                    <a href="#about" class="nav-link hover:text-blue-500 transition-colors" data-key="nav_about">Sobre mí</a>
+                    <a href="#projects" class="nav-link hover:text-blue-500 transition-colors" data-key="nav_projects">Proyectos</a>
+                    <a href="#contact" class="nav-link hover:text-blue-500 transition-colors" data-key="nav_contact">Contacto</a>
+                </nav>
+                <button id="lang-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-semibold text-sm w-10 h-10 flex items-center justify-center">
+                    EN
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+                    <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    <svg id="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon hidden"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Sección Hero -->
+            <section class="text-center mb-24 md:mb-32">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-4" data-key="hero_title">Hola, soy [Tu Nombre]</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-600 dark:text-slate-400 mb-8" data-key="hero_subtitle">
+                    Un científico de datos apasionado por transformar datos complejos en soluciones impactantes y decisiones estratégicas.
                 </p>
-            </article>
-            <article>
-                <h3>Nombre del Proyecto 2</h3>
-                <p>
-                    Descripción de tu segundo proyecto.
-                </p>
-            </article>
-        </section>
-
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <p>
-                Puedes contactarme a través de mi correo electrónico: 
-                <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a> 
-                o en mis redes sociales.
-            </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="mailto:tuemail@example.com" class="accent-bg text-white font-medium py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105" data-key="contact_me_btn">
+                        Contáctame
+                    </a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/></svg>
+                        </a>
+                        <a href="#" class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
             </section>
 
-    </main>
+            <!-- Sección Sobre Mí y Habilidades -->
+            <section id="about" class="mb-24 md:mb-32">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-key="about_title">Sobre mí</h2>
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2">
+                        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Tu+Foto" alt="Foto de perfil" class="rounded-full w-48 h-48 md:w-64 md:h-64 mx-auto object-cover shadow-lg">
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 text-lg" data-key="about_p">
+                            Soy un analista de datos con experiencia en machine learning, visualización de datos y modelado estadístico. Mi objetivo es utilizar mis habilidades para resolver problemas complejos y generar valor a través de los datos. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos desafiantes.
+                        </p>
+                        <h3 class="font-bold text-xl mb-4" data-key="skills_title">Mis Habilidades</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Python</span>
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">R</span>
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">SQL</span>
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">TensorFlow</span>
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Scikit-learn</span>
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Tableau</span>
+                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Power BI</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2025 - [Tu Nombre]. Todos los derechos reservados.</p>
-    </footer>
+            <!-- Sección de Proyectos -->
+            <section id="projects" class="mb-24 md:mb-32">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-key="projects_title">Proyectos Destacados</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Proyecto 1 -->
+                    <div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img src="https://placehold.co/600x400/a5b4fc/1e293b?text=Proyecto+1" alt="Imagen del Proyecto 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-key="p1_title">Análisis de Sentimiento en Redes Sociales</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4" data-key="p1_desc">
+                                Modelo de NLP para clasificar la polaridad de tweets sobre un producto, utilizando LSTM y Transformers.
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="font-medium accent-text hover:underline" data-key="view_code">Ver Código &rarr;</a>
+                                <a href="#" class="font-medium accent-text hover:underline" data-key="view_article">Artículo &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proyecto 2 -->
+                    <div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img src="https://placehold.co/600x400/818cf8/1e293b?text=Proyecto+2" alt="Imagen del Proyecto 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-key="p2_title">Predicción de Fuga de Clientes (Churn)</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4" data-key="p2_desc">
+                                Desarrollo de un modelo de clasificación (XGBoost) para predecir qué clientes tienen mayor probabilidad de abandonar un servicio.
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="font-medium accent-text hover:underline" data-key="view_code_2">Ver Código &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proyecto 3 -->
+                    <div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img src="https://placehold.co/600x400/6366f1/1e293b?text=Proyecto+3" alt="Imagen del Proyecto 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-key="p3_title">Sistema de Recomendación de Películas</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4" data-key="p3_desc">
+                                Implementación de un sistema de recomendación híbrido combinando filtrado colaborativo y basado en contenido.
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="font-medium accent-text hover:underline" data-key="view_code_3">Ver Código &rarr;</a>
+                                <a href="#" class="font-medium accent-text hover:underline" data-key="view_demo">Demo &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proyecto 4 -->
+                    <div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <img src="https://placehold.co/600x400/4f46e5/1e293b?text=Proyecto+4" alt="Imagen del Proyecto 4" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-key="p4_title">Dashboard Interactivo de Ventas</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-4" data-key="p4_desc">
+                                Creación de un dashboard en Tableau para visualizar KPIs de ventas en tiempo real y facilitar la toma de decisiones.
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="font-medium accent-text hover:underline" data-key="view_dashboard">Ver Dashboard &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    </body>
+            <!-- Sección de Contacto -->
+            <section id="contact" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="contact_title">Hablemos</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8" data-key="contact_p">
+                    Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes alguna pregunta o simplemente quieres saludar, no dudes en contactarme.
+                </p>
+                <a href="mailto:tuemail@example.com" class="inline-block accent-bg text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105" data-key="send_email_btn">
+                    Enviar un correo
+                </a>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-500 dark:text-slate-400 mt-24 border-t border-slate-200 dark:border-slate-800 pt-8">
+            <p data-key="footer_text">&copy; 2024 [Tu Nombre]. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Lógica para el cambio de tema ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-icon-light');
+        const darkIcon = document.getElementById('theme-icon-dark');
+        const userTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        const toggleTheme = (isDark) => {
+            if (isDark) {
+                document.body.classList.add('dark');
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+            toggleTheme(true);
+        } else {
+            toggleTheme(false);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDarkMode = document.body.classList.contains('dark');
+            toggleTheme(!isDarkMode);
+        });
+
+        // --- Lógica para el cambio de idioma ---
+        const langToggle = document.getElementById('lang-toggle');
+        const translations = {
+            es: {
+                your_name_header: "Tu Nombre",
+                nav_about: "Sobre mí",
+                nav_projects: "Proyectos",
+                nav_contact: "Contacto",
+                hero_title: "Hola, soy [Tu Nombre]",
+                hero_subtitle: "Un científico de datos apasionado por transformar datos complejos en soluciones impactantes y decisiones estratégicas.",
+                contact_me_btn: "Contáctame",
+                about_title: "Sobre mí",
+                about_p: "Soy un analista de datos con experiencia en machine learning, visualización de datos y modelado estadístico. Mi objetivo es utilizar mis habilidades para resolver problemas complejos y generar valor a través de los datos. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos desafiantes.",
+                skills_title: "Mis Habilidades",
+                projects_title: "Proyectos Destacados",
+                p1_title: "Análisis de Sentimiento en Redes Sociales",
+                p1_desc: "Modelo de NLP para clasificar la polaridad de tweets sobre un producto, utilizando LSTM y Transformers.",
+                view_code: "Ver Código →",
+                view_article: "Artículo →",
+                p2_title: "Predicción de Fuga de Clientes (Churn)",
+                p2_desc: "Desarrollo de un modelo de clasificación (XGBoost) para predecir qué clientes tienen mayor probabilidad de abandonar un servicio.",
+                view_code_2: "Ver Código →",
+                p3_title: "Sistema de Recomendación de Películas",
+                p3_desc: "Implementación de un sistema de recomendación híbrido combinando filtrado colaborativo y basado en contenido.",
+                view_code_3: "Ver Código →",
+                view_demo: "Demo →",
+                p4_title: "Dashboard Interactivo de Ventas",
+                p4_desc: "Creación de un dashboard en Tableau para visualizar KPIs de ventas en tiempo real y facilitar la toma de decisiones.",
+                view_dashboard: "Ver Dashboard →",
+                contact_title: "Hablemos",
+                contact_p: "Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes alguna pregunta o simplemente quieres saludar, no dudes en contactarme.",
+                send_email_btn: "Enviar un correo",
+                footer_text: "© 2024 [Tu Nombre]. Todos los derechos reservados."
+            },
+            en: {
+                your_name_header: "Your Name",
+                nav_about: "About",
+                nav_projects: "Projects",
+                nav_contact: "Contact",
+                hero_title: "Hello, I'm [Your Name]",
+                hero_subtitle: "A passionate data scientist focused on transforming complex data into impactful solutions and strategic decisions.",
+                contact_me_btn: "Contact Me",
+                about_title: "About Me",
+                about_p: "I am a data analyst with experience in machine learning, data visualization, and statistical modeling. My goal is to use my skills to solve complex problems and generate value through data. I love learning new technologies and applying them to challenging projects.",
+                skills_title: "My Skills",
+                projects_title: "Featured Projects",
+                p1_title: "Social Media Sentiment Analysis",
+                p1_desc: "NLP model to classify the polarity of tweets about a product, using LSTM and Transformers.",
+                view_code: "View Code →",
+                view_article: "Article →",
+                p2_title: "Customer Churn Prediction",
+                p2_desc: "Development of a classification model (XGBoost) to predict which customers are most likely to leave a service.",
+                view_code_2: "View Code →",
+                p3_title: "Movie Recommendation System",
+                p3_desc: "Implementation of a hybrid recommendation system combining collaborative and content-based filtering.",
+                view_code_3: "View Code →",
+                view_demo: "Demo →",
+                p4_title: "Interactive Sales Dashboard",
+                p4_desc: "Creation of a dashboard in Tableau to visualize sales KPIs in real-time and facilitate decision-making.",
+                view_dashboard: "View Dashboard →",
+                contact_title: "Let's Talk",
+                contact_p: "I am open to new opportunities and collaborations. If you have any questions or just want to say hello, feel free to contact me.",
+                send_email_btn: "Send an Email",
+                footer_text: "© 2024 [Your Name]. All rights reserved."
+            }
+        };
+
+        const setLanguage = (lang) => {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+            langToggle.innerText = lang === 'es' ? 'EN' : 'ES';
+            localStorage.setItem('language', lang);
+        };
+
+        langToggle.addEventListener('click', () => {
+            const currentLang = localStorage.getItem('language') || 'es';
+            const newLang = currentLang === 'es' ? 'en' : 'es';
+            setLanguage(newLang);
+        });
+
+        // Cargar idioma al iniciar
+        const savedLang = localStorage.getItem('language') || 'es';
+        setLanguage(savedLang);
+
+    </script>
+</body>
 </html>
