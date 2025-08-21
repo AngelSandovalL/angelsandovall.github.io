@@ -1,0 +1,64 @@
+/* Estilos base */
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Variables de color para los temas */
+:root {
+    --bg-light: #f8fafc; /* slate-50 */
+    --text-light: #0f172a; /* slate-900 */
+    --card-bg-light: #ffffff;
+    --border-light: #e2e8f0; /* slate-200 */
+    --accent-color: #3b82f6; /* blue-500 */
+    --accent-hover: #2563eb; /* blue-600 */
+
+    --bg-dark: #0f172a; /* slate-900 */
+    --text-dark: #f8fafc; /* slate-50 */
+    --card-bg-dark: #1e293b; /* slate-800 */
+    --border-dark: #334155; /* slate-700 */
+}
+/* Estilos para el modo claro (por defecto) */
+body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+.card {
+    background-color: var(--card-bg-light);
+    border: 1px solid var(--border-light);
+}
+.nav-link {
+    color: var(--text-light);
+}
+.accent-text {
+    color: var(--accent-color);
+}
+.accent-bg {
+    background-color: var(--accent-color);
+}
+.accent-bg:hover {
+    background-color: var(--accent-hover);
+}
+.icon-bg {
+    background-color: #e0f2fe; /* sky-100 */
+}
+
+/* Estilos para el modo oscuro */
+body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+.dark .card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+}
+.dark .nav-link {
+    color: var(--text-dark);
+}
+.dark .icon-bg {
+    background-color: #38bdf81a; /* sky-400/10 */
+}
+.dark .form-input {
+    background-color: #334155; /* slate-700 */
+    border-color: #475569; /* slate-600 */
+    color: var(--text-dark);
+}

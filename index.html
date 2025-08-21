@@ -13,72 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* Estilos base */
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        /* Variables de color para los temas */
-        :root {
-            --bg-light: #f8fafc; /* slate-50 */
-            --text-light: #0f172a; /* slate-900 */
-            --card-bg-light: #ffffff;
-            --border-light: #e2e8f0; /* slate-200 */
-            --accent-color: #3b82f6; /* blue-500 */
-            --accent-hover: #2563eb; /* blue-600 */
-
-            --bg-dark: #0f172a; /* slate-900 */
-            --text-dark: #f8fafc; /* slate-50 */
-            --card-bg-dark: #1e293b; /* slate-800 */
-            --border-dark: #334155; /* slate-700 */
-        }
-        /* Estilos para el modo claro (por defecto) */
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-light);
-        }
-        .card {
-            background-color: var(--card-bg-light);
-            border: 1px solid var(--border-light);
-        }
-        .nav-link {
-            color: var(--text-light);
-        }
-        .accent-text {
-            color: var(--accent-color);
-        }
-        .accent-bg {
-            background-color: var(--accent-color);
-        }
-        .accent-bg:hover {
-            background-color: var(--accent-hover);
-        }
-        .icon-bg {
-            background-color: #e0f2fe; /* sky-100 */
-        }
-
-        /* Estilos para el modo oscuro */
-        body.dark {
-            background-color: var(--bg-dark);
-            color: var(--text-dark);
-        }
-        .dark .card {
-            background-color: var(--card-bg-dark);
-            border-color: var(--border-dark);
-        }
-        .dark .nav-link {
-            color: var(--text-dark);
-        }
-        .dark .icon-bg {
-            background-color: #38bdf81a; /* sky-400/10 */
-        }
-        .dark .form-input {
-            background-color: #334155; /* slate-700 */
-            border-color: #475569; /* slate-600 */
-            color: var(--text-dark);
-        }
-    </style>
+    <!-- Hoja de Estilos Personalizada -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
 
@@ -94,8 +30,23 @@
                     <a href="#projects" class="nav-link hover:text-blue-500 transition-colors" data-key="nav_projects">Proyectos</a>
                     <a href="#contact" class="nav-link hover:text-blue-500 transition-colors" data-key="nav_contact">Contacto</a>
                 </nav>
-                <button id="lang-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-semibold text-sm w-10 h-10 flex items-center justify-center">
-                    EN
+                <button id="lang-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors w-10 h-10 flex items-center justify-center overflow-hidden">
+                    <!-- Bandera de México (MX) -->
+                    <svg id="lang-icon-es" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 15" class="w-7 rounded-sm">
+                        <rect width="21" height="15" fill="#fff"/>
+                        <rect width="7" height="15" fill="#006847"/>
+                        <rect x="14" width="7" height="15" fill="#ce1126"/>
+                        <path d="M10.5 6.5a1 1 0 0 1 0 2 1 1 0 0 0 0 2" fill="#d8b43c" stroke="#8c5b30" stroke-width=".5"/>
+                    </svg>
+                    <!-- Bandera de Reino Unido (UK) -->
+                    <svg id="lang-icon-en" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" class="w-7 rounded-sm hidden">
+                        <clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath>
+                        <path d="M0 0v30h60V0z" fill="#012169"/>
+                        <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6" clip-path="url(#a)"/>
+                        <path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4" clip-path="url(#a)"/>
+                        <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
+                        <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+                    </svg>
                 </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
                     <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
@@ -231,128 +182,7 @@
 
     </div>
 
-    <script>
-        // --- Lógica para el cambio de tema ---
-        const themeToggle = document.getElementById('theme-toggle');
-        const lightIcon = document.getElementById('theme-icon-light');
-        const darkIcon = document.getElementById('theme-icon-dark');
-        const userTheme = localStorage.getItem('theme');
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        const toggleTheme = (isDark) => {
-            if (isDark) {
-                document.body.classList.add('dark');
-                lightIcon.classList.add('hidden');
-                darkIcon.classList.remove('hidden');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark');
-                lightIcon.classList.remove('hidden');
-                darkIcon.classList.add('hidden');
-                localStorage.setItem('theme', 'light');
-            }
-        };
-
-        if (userTheme === 'dark' || (!userTheme && systemTheme)) {
-            toggleTheme(true);
-        } else {
-            toggleTheme(false);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const isDarkMode = document.body.classList.contains('dark');
-            toggleTheme(!isDarkMode);
-        });
-
-        // --- Lógica para el cambio de idioma ---
-        const langToggle = document.getElementById('lang-toggle');
-        const translations = {
-            es: {
-                your_name_header: "Tu Nombre",
-                nav_about: "Sobre mí",
-                nav_projects: "Proyectos",
-                nav_contact: "Contacto",
-                hero_title: "Hola, soy [Tu Nombre]",
-                hero_subtitle: "Un científico de datos apasionado por transformar datos complejos en soluciones impactantes y decisiones estratégicas.",
-                contact_me_btn: "Contáctame",
-                about_title: "Sobre mí",
-                about_p: "Soy un analista de datos con experiencia en machine learning, visualización de datos y modelado estadístico. Mi objetivo es utilizar mis habilidades para resolver problemas complejos y generar valor a través de los datos. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos desafiantes.",
-                skills_title: "Mis Habilidades",
-                projects_title: "Proyectos Destacados",
-                p1_title: "Análisis de Sentimiento en Redes Sociales",
-                p1_desc: "Modelo de NLP para clasificar la polaridad de tweets sobre un producto, utilizando LSTM y Transformers.",
-                view_code: "Ver Código →",
-                view_article: "Artículo →",
-                p2_title: "Predicción de Fuga de Clientes (Churn)",
-                p2_desc: "Desarrollo de un modelo de clasificación (XGBoost) para predecir qué clientes tienen mayor probabilidad de abandonar un servicio.",
-                view_code_2: "Ver Código →",
-                p3_title: "Sistema de Recomendación de Películas",
-                p3_desc: "Implementación de un sistema de recomendación híbrido combinando filtrado colaborativo y basado en contenido.",
-                view_code_3: "Ver Código →",
-                view_demo: "Demo →",
-                p4_title: "Dashboard Interactivo de Ventas",
-                p4_desc: "Creación de un dashboard en Tableau para visualizar KPIs de ventas en tiempo real y facilitar la toma de decisiones.",
-                view_dashboard: "Ver Dashboard →",
-                contact_title: "Hablemos",
-                contact_p: "Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes alguna pregunta o simplemente quieres saludar, no dudes en contactarme.",
-                send_email_btn: "Enviar un correo",
-                footer_text: "© 2024 [Tu Nombre]. Todos los derechos reservados."
-            },
-            en: {
-                your_name_header: "Your Name",
-                nav_about: "About",
-                nav_projects: "Projects",
-                nav_contact: "Contact",
-                hero_title: "Hello, I'm [Your Name]",
-                hero_subtitle: "A passionate data scientist focused on transforming complex data into impactful solutions and strategic decisions.",
-                contact_me_btn: "Contact Me",
-                about_title: "About Me",
-                about_p: "I am a data analyst with experience in machine learning, data visualization, and statistical modeling. My goal is to use my skills to solve complex problems and generate value through data. I love learning new technologies and applying them to challenging projects.",
-                skills_title: "My Skills",
-                projects_title: "Featured Projects",
-                p1_title: "Social Media Sentiment Analysis",
-                p1_desc: "NLP model to classify the polarity of tweets about a product, using LSTM and Transformers.",
-                view_code: "View Code →",
-                view_article: "Article →",
-                p2_title: "Customer Churn Prediction",
-                p2_desc: "Development of a classification model (XGBoost) to predict which customers are most likely to leave a service.",
-                view_code_2: "View Code →",
-                p3_title: "Movie Recommendation System",
-                p3_desc: "Implementation of a hybrid recommendation system combining collaborative and content-based filtering.",
-                view_code_3: "View Code →",
-                view_demo: "Demo →",
-                p4_title: "Interactive Sales Dashboard",
-                p4_desc: "Creation of a dashboard in Tableau to visualize sales KPIs in real-time and facilitate decision-making.",
-                view_dashboard: "View Dashboard →",
-                contact_title: "Let's Talk",
-                contact_p: "I am open to new opportunities and collaborations. If you have any questions or just want to say hello, feel free to contact me.",
-                send_email_btn: "Send an Email",
-                footer_text: "© 2024 [Your Name]. All rights reserved."
-            }
-        };
-
-        const setLanguage = (lang) => {
-            document.documentElement.lang = lang;
-            document.querySelectorAll('[data-key]').forEach(element => {
-                const key = element.getAttribute('data-key');
-                if (translations[lang] && translations[lang][key]) {
-                    element.innerText = translations[lang][key];
-                }
-            });
-            langToggle.innerText = lang === 'es' ? 'EN' : 'ES';
-            localStorage.setItem('language', lang);
-        };
-
-        langToggle.addEventListener('click', () => {
-            const currentLang = localStorage.getItem('language') || 'es';
-            const newLang = currentLang === 'es' ? 'en' : 'es';
-            setLanguage(newLang);
-        });
-
-        // Cargar idioma al iniciar
-        const savedLang = localStorage.getItem('language') || 'es';
-        setLanguage(savedLang);
-
-    </script>
+    <!-- Script Personalizado -->
+    <script src="script.js" defer></script>
 </body>
 </html>
