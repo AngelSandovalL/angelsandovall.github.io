@@ -62,3 +62,25 @@ body.dark {
     border-color: #475569; /* slate-600 */
     color: var(--text-dark);
 }
+
+/* Estilos para la lista de descripción en las tarjetas de experiencia */
+.experience-card-description {
+    list-style-position: outside;
+    padding-left: 1.25rem; /* Equivalente a pl-5 en Tailwind */
+}
+
+.experience-card-description li {
+    position: relative;
+    padding-left: 1rem; /* Espacio para el bullet point */
+    margin-bottom: 0.5rem; /* Espacio entre items */
+}
+
+.experience-card-description li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color); /* Color del bullet point */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
