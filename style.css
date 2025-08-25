@@ -1,0 +1,183 @@
+/* Estilos base */
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Variables de color para los temas */
+:root {
+    --bg-light: #f8fafc; /* slate-50 */
+    --text-light: #0f172a; /* slate-900 */
+    --card-bg-light: #ffffff;
+    --border-light: #e2e8f0; /* slate-200 */
+    --accent-color: #3b82f6; /* blue-500 */
+    --accent-hover: #2563eb; /* blue-600 */
+    --particles-color-light: #94a3b8; /* slate-400 */
+
+    --bg-dark: #0f172a; /* slate-900 */
+    --text-dark: #f8fafc; /* slate-50 */
+    --card-bg-dark: #1e293b; /* slate-800 */
+    --border-dark: #334155; /* slate-700 */
+    --particles-color-dark: #475569; /* slate-600 */
+}
+
+/* --- ESTILOS DE ANIMACIONES Y UI/UX --- */
+
+/* Fondo de Partículas */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Barra de Progreso de Scroll */
+#scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--accent-color);
+    width: 0%;
+    z-index: 100;
+    transition: width 0.1s ease-out;
+}
+
+/* Títulos de sección con icono */
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; /* 12px */
+}
+
+/* Línea de tiempo de Experiencia */
+#experience-container {
+    position: relative;
+    padding-left: 2.5rem; /* Espacio para la línea y el punto */
+    border-left: 2px solid var(--border-light);
+}
+.dark #experience-container {
+    border-left-color: var(--border-dark);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem; /* Espacio entre trabajos */
+}
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem; /* Posiciona el punto en la línea */
+    top: 6px; /* Alineación vertical con el texto */
+    transform: translateX(-50%);
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 3px solid var(--bg-light); 
+    box-sizing: content-box;
+}
+.dark .timeline-item::before {
+    border-color: var(--bg-dark);
+}
+
+
+/* Efecto Máquina de Escribir */
+[data-key="hero_subtitle"] .caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: var(--accent-color);
+    animation: blink 0.7s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Animación de Fade-in para Secciones */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Micro-interacciones en iconos y botones */
+.social-icon, .contact-btn {
+    transition: transform 0.3s ease;
+}
+.social-icon:hover, .contact-btn:hover {
+    transform: scale(1.1);
+}
+
+
+/* --- ESTILOS ORIGINALES --- */
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+.card {
+    background-color: var(--card-bg-light);
+    border: 1px solid var(--border-light);
+}
+.nav-link {
+    color: var(--text-light);
+}
+.accent-text {
+    color: var(--accent-color);
+}
+.accent-bg {
+    background-color: var(--accent-color);
+}
+.accent-bg:hover {
+    background-color: var(--accent-hover);
+}
+
+body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+.dark .card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+}
+.dark .nav-link {
+    color: var(--text-dark);
+}
+
+.experience-card-description {
+    list-style-position: outside;
+    padding-left: 1.25rem;
+}
+
+.experience-card-description li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-card-description li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
