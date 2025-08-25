@@ -83,7 +83,6 @@ function initializePortfolio() {
                 const descriptionPoints = job.description.map(point => `<li>${point}</li>`).join('');
                 const highlight = job.highlight ? `<p class="mt-4 font-semibold accent-text">${translations.main.highlight_prefix}: <span class="font-normal text-slate-600 dark:text-slate-400">${job.highlight}</span></p>` : '';
                 
-                // ** CAMBIO PRINCIPAL: Se envuelve la tarjeta en un div 'timeline-item' **
                 const experienceEntry = `
                     <div class="timeline-item">
                         <div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6">
