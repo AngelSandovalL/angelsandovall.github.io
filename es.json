@@ -19,7 +19,8 @@
     "contact_title": "Hablemos",
     "contact_p": "Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes alguna pregunta o simplemente quieres saludar, no dudes en contactarme.",
     "send_email_btn": "Enviar un correo",
-    "footer_text": "© 2025 Angel Sandoval. Todos los derechos reservados."
+    "footer_text": "© 2025 Angel Sandoval. Todos los derechos reservados.",
+    "download_cv_btn": "Descargar CV"
   },
   "skills": [
     "Power BI", "DAX", "SQL", "Excel Avanzado", "Power Query", "Modelado de datos", "RLS", 
@@ -69,16 +70,28 @@
   "projects": [
     {
       "title": "Proyecto de Ejemplo 1",
-      "description": "Esta es una descripción de ejemplo para un proyecto. Reemplázala con los detalles de tu propio trabajo.",
+      "description": "Placeholder",
       "image": "https://placehold.co/600x400/a5b4fc/1e293b?text=Proyecto+1",
       "code_url": "#"
     },
     {
       "title": "Proyecto de Ejemplo 2",
-      "description": "Aquí puedes describir otro de tus proyectos, destacando las tecnologías y metodologías que utilizaste.",
+      "description": "Placeholder",
       "image": "https://placehold.co/600x400/818cf8/1e293b?text=Proyecto+2",
       "code_url": "#"
-    }
+    },
+    {
+      "title": "Proyecto de Ejemplo 3",
+      "description": "Placeholder",
+      "image": "https://placehold.co/600x400/818cf8/1e293b?text=Proyecto+2",
+      "code_url": "#"
+    },
+    {
+      "title": "Proyecto de Ejemplo 4",
+      "description": "Placeholder",
+      "image": "https://placehold.co/600x400/818cf8/1e293b?text=Proyecto+2",
+      "code_url": "#"
+    }    
   ]
 }
 

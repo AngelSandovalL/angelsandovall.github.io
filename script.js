@@ -44,6 +44,7 @@ function initializePortfolio() {
         const skillsContainer = document.getElementById('skills-container');
         const experienceContainer = document.getElementById('experience-container');
         const projectsContainer = document.getElementById('projects-container');
+        const cvDownloadBtn = document.getElementById('cv-download-btn');
 
         const loadTranslations = async (lang) => {
             const response = await fetch(`./${lang}.json`);
@@ -70,6 +71,10 @@ function initializePortfolio() {
             langIconEs.classList.toggle('hidden', lang !== 'es');
             langIconEn.classList.toggle('hidden', lang === 'es');
 
+            if(cvDownloadBtn) {
+                cvDownloadBtn.href = lang === 'es' ? './assets/docs/CV_Angel_Sandoval_ES.pdf' : './assets/docs/CV_Angel_Sandoval_EN.pdf';
+            }
+
             skillsContainer.innerHTML = '';
             translations.skills.forEach(skill => {
                 const skillTag = document.createElement('span');
@@ -81,17 +86,17 @@ function initializePortfolio() {
             experienceContainer.innerHTML = '';
             translations.experience.forEach(job => {
                 const descriptionPoints = job.description.map(point => `<li>${point}</li>`).join('');
-                const highlight = job.highlight ? `<p class="mt-4 font-semibold accent-text">${translations.main.highlight_prefix}: <span class="font-normal text-slate-600 dark:text-slate-400">${job.highlight}</span></p>` : '';
+                const highlight = job.highlight ? `<p class="mt-4 font-semibold accent-text">${translations.main.highlight_prefix}: <span class="font-normal text-slate-800 dark:text-slate-400">${job.highlight}</span></p>` : '';
                 
                 const experienceEntry = `
                     <div class="timeline-item">
-                        <div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6">
+                        <div class="card rounded-xl overflow-hidden shadow-lg p-6">
                             <div class="flex justify-between items-start mb-2">
                                 <h3 class="text-xl font-bold">${job.title}</h3>
                                 <span class="text-sm font-medium text-slate-500 dark:text-slate-400 text-right">${job.date}</span>
                             </div>
-                            <h4 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">${job.company}</h4>
-                            <ul class="experience-card-description text-slate-600 dark:text-slate-400">
+                            <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-300 mb-4">${job.company}</h4>
+                            <ul class="experience-card-description text-slate-800 dark:text-slate-400">
                                 ${descriptionPoints}
                             </ul>
                             ${highlight}
@@ -103,7 +108,7 @@ function initializePortfolio() {
 
             projectsContainer.innerHTML = '';
             translations.projects.forEach(project => {
-                projectsContainer.innerHTML += `<div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"><img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">${project.title}</h3><p class="text-slate-600 dark:text-slate-400 mb-4">${project.description}</p><div class="flex space-x-4"><a href="${project.code_url}" target="_blank" class="font-medium accent-text hover:underline">${translations.main.view_code_btn} &rarr;</a></div></div></div>`;
+                projectsContainer.innerHTML += `<div class="card rounded-xl overflow-hidden shadow-lg"><img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">${project.title}</h3><p class="text-slate-800 dark:text-slate-400 mb-4">${project.description}</p><div class="flex space-x-4"><a href="${project.code_url}" target="_blank" class="font-medium accent-text hover:underline">${translations.main.view_code_btn} &rarr;</a></div></div></div>`;
             });
 
             localStorage.setItem('language', lang);

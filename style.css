@@ -135,6 +135,11 @@ body {
 .card {
     background-color: var(--card-bg-light);
     border: 1px solid var(--border-light);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-4px); 
+    background-color: var(--card-bg-light-hover);
 }
 .nav-link {
     color: var(--text-light);
@@ -156,6 +161,9 @@ body.dark {
 .dark .card {
     background-color: var(--card-bg-dark);
     border-color: var(--border-dark);
+}
+.dark .card:hover {
+    background-color: var(--card-bg-dark-hover);
 }
 .dark .nav-link {
     color: var(--text-dark);
